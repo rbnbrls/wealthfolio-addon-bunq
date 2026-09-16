@@ -1,0 +1,40 @@
+{
+  "id": "bunq-addon",
+  "name": "bunq Accounts",
+  "version": "0.5.4",
+  "main": "dist/addon.js",
+  "description": "Import and synchronize bunq bank accounts into Wealthfolio.",
+  "author": "Local development",
+  "sdkVersion": "3.8.0",
+  "minWealthfolioVersion": "3.8.0",
+  "enabled": true,
+  "contributes": {
+    "routes": [{ "id": "bunq-accounts" }],
+    "links": {
+      "sidebar": [{
+        "id": "bunq-accounts",
+        "route": "bunq-accounts",
+        "label": "bunq Accounts",
+        "icon": "bank",
+        "order": 110
+      }]
+    }
+  },
+  "permissions": [
+    { "category": "accounts", "functions": ["getAll", "create"], "purpose": "Find and create imported bunq accounts" },
+    { "category": "activities", "functions": ["getAll", "import"], "purpose": "Import bunq payments as Wealthfolio activities" },
+    { "category": "spending", "functions": ["getCategories", "saveRule", "rerunRules"], "purpose": "Map bunq transaction categories to Wealthfolio spending categories" },
+    { "category": "network", "functions": ["request"], "purpose": "Read bunq account data through the brokered HTTPS API" },
+    { "category": "secrets", "functions": ["get", "set", "delete", "use"], "purpose": "Store bunq authentication material in the OS keyring" }
+  ],
+  "network": {
+    "allowedHosts": ["api.bunq.com", "public-api.sandbox.bunq.com"]
+  },
+  "hostDependencies": {
+    "@tanstack/react-query": "^5.90.0",
+    "@wealthfolio/addon-sdk": "^3.8.0",
+    "@wealthfolio/ui": "^3.8.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
