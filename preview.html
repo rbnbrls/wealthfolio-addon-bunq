@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bunq Accounts – theme preview</title>
+    <style>
+      :root { --background:#fffcf0; --foreground:#343331; --card:#f2f0e5; --border:#d9d6c9; --muted:#e6e4d9; --muted-foreground:#737169; --primary:#205ea6; --primary-foreground:#fff; --input:#c9c6ba; }
+      :root.dark { --background:#282726; --foreground:#e6e4d9; --card:#343331; --border:#575653; --muted:#3d3c3a; --muted-foreground:#b7b5ac; --primary:#6ea8e5; --primary-foreground:#1f1e1d; --input:#77756d; }
+      * { box-sizing:border-box; } body { margin:0; background:var(--background); color:var(--foreground); font:14px system-ui,sans-serif; } main { max-width:920px; margin:auto; padding:32px; } h1,h2,h3,p { margin:0; } header { margin-bottom:24px; } h1 { font-size:30px; margin-bottom:6px; } h2 { font-size:18px; } .muted { color:var(--muted-foreground); } .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:18px; } .row { display:flex; justify-content:space-between; align-items:center; gap:16px; } .account { border:1px solid var(--border); border-radius:8px; padding:14px; margin-top:12px; } .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; } label { display:grid; gap:5px; } select,input { color:var(--foreground); background:var(--background); border:1px solid var(--input); border-radius:6px; padding:8px; } button { border:1px solid var(--input); border-radius:7px; padding:9px 13px; color:var(--foreground); background:var(--background); } .primary { color:var(--primary-foreground); background:var(--primary); border-color:var(--primary); } @media(max-width:640px){ main{padding:20px}.grid{grid-template-columns:1fr}.row{align-items:flex-start;flex-direction:column} }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="row"><div><h1>bunq Accounts</h1><p class="muted">Importeer en synchroniseer bunq monetary accounts in Wealthfolio.</p></div><label>Appearance thema<select id="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label></header>
+      <section class="card"><h2>Stap 1 · API-koppeling</h2><p class="muted" style="margin-top:6px">Voer alleen je bunq API-key in. De addon voert de installatie-, device- en session-bootstrap uit.</p><div class="grid"><select><option>Production</option><option>Sandbox</option></select><input type="password" placeholder="bunq API-key" /></div><button style="margin-top:12px">Opslaan & verbinden</button></section>
+      <section class="card"><div class="row"><div><h2>Accounts</h2><p class="muted" style="margin-top:5px">Nieuwe accounts worden handmatig via de wizard toegevoegd.</p></div><div><button>Wizard opnieuw doorlopen</button> <button class="primary">Sync starten</button></div></div><div class="account"><div class="row"><div><strong>Mijn bunq rekening</strong><div class="muted" style="margin-top:4px">Bankrekening · 1.234,56 EUR · ID 123456</div></div><label style="display:flex;gap:7px"><input type="checkbox" checked /> Syncen</label></div><div class="grid"><label>Fallback expense<select><option>Geen fallback</option><option>Boodschappen</option></select></label><label>Fallback income<select><option>Geen fallback</option><option>Salaris</option></select></label></div></div></section>
+    </main>
+    <script>const root=document.documentElement; const select=document.querySelector('#theme'); select.value=localStorage.getItem('bunq-preview-theme')||'light'; root.classList.toggle('dark',select.value==='dark'); select.addEventListener('change',()=>{root.classList.toggle('dark',select.value==='dark');localStorage.setItem('bunq-preview-theme',select.value)});</script>
+  </body>
+</html>

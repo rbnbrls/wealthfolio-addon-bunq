@@ -1,7 +1,7 @@
 {
   "id": "bunq-addon",
   "name": "bunq Accounts",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "main": "dist/addon.js",
   "description": "Import and synchronize bunq bank accounts into Wealthfolio.",
   "author": "Local development",
