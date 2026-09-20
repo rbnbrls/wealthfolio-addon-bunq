@@ -3,11 +3,13 @@
   "version": "0.6.0",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=22.12.0" },
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
     "dev:server": "wealthfolio-addon dev",
     "type-check": "tsc --noEmit",
+    "test": "node --test",
     "bundle": "pnpm build && zip -r wealthfolio-addon-bunq-0.6.0.zip manifest.json dist/ assets/ README.md -x '*.map'"
   },
   "dependencies": {
